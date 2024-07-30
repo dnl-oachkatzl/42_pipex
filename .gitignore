@@ -1,5 +1,5 @@
 a.out
-.o
+*.o
 pipex
 helloWorld*
 *file*
