@@ -6,13 +6,12 @@
 /*   By: daspring <daspring@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:11:57 by daspring          #+#    #+#             */
-/*   Updated: 2024/07/30 21:08:15 by daspring         ###   ########.fr       */
+/*   Updated: 2024/07/30 21:54:55 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/wait.h>
@@ -30,7 +29,8 @@ int	main(int argc, char *argv[], char *envp[])
 
 	if (argc != 5)
 	{
-		perror("Wrong format used. Try: ./pipex infile \"ls -l\" \"wc -l\" outfile");
+		ft_printf("Wrong format used.\n");
+		ft_printf("Try: ./pipex infile \"ls -l\" \"wc -l\" outfile\n");
 		return (EXIT_FAILURE);
 	}
 	if (pipe(fd) == -1)
@@ -66,7 +66,11 @@ void	run_first_command(char *argv[], int fd[], char *envp[])
 	close(fd[0]);
 	close(filedes);
 	cmd_string = ft_split(argv[2], ' ');
-	execve("/bin/cat", cmd_string, envp);
+	if (execve("/bin/cat", cmd_string, envp) == -1)
+	{
+		perror("First given command does not exist");
+		exit(EXIT_FAILURE);
+	}
 	write(2, "something went wrong with the first command\n", 44);
 }
 
@@ -86,6 +90,10 @@ void	run_last_command(char *argv[], int fd[], char *envp[])
 	close(fd[1]);
 	close(filedes);
 	cmd_string = ft_split(argv[3], ' ');
-	execve("/bin/cat", cmd_string, envp);
+	if (execve("/bin/cat", cmd_string, envp) == -1)
+	{
+		perror("Last given command does not exist");
+		exit(EXIT_FAILURE);
+	}
 	write(2, "something went wrong with the second command\n", 45);
 }

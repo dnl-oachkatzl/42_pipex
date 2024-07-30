@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:10:28 by daspring          #+#    #+#             */
-/*   Updated: 2024/03/24 13:48:41 by daspring         ###   ########.fr       */
+/*   Updated: 2024/07/30 21:37:18 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 #include <stdlib.h>
 #include <stddef.h>
-
-
 
 typedef struct s_list
 {
@@ -77,3 +75,15 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/* FT_PRINTF */
+int		ft_printf(const char *format, ...);
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
+int		ft_putnbr(int n);
+int		ft_putuint(unsigned int n);
+int		ft_puthexa(unsigned int n);
+int		ft_puthexa_upper_case(unsigned int n);
+int		ft_putpointer(unsigned long n);
+int		put_to_screen(char *c, int *counter);
+int		power_of_ten(int pow);

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_printf_utilities.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 21:34:40 by daspring          #+#    #+#             */
-/*   Updated: 2024/07/30 21:38:37 by daspring         ###   ########.fr       */
+/*   Created: 2024/04/01 15:18:44 by daspring          #+#    #+#             */
+/*   Updated: 2024/07/30 21:53:55 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include <unistd.h>
 
-#include <stdio.h>
-
-char	*ft_strjoin(const char *s1, const char *s2)
+int	power_of_ten(int pow)
 {
-	char	*str;
-	size_t	pos;
-	size_t	s1_len;
-	size_t	s2_len;
+	int	result;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	str = ft_calloc((s1_len + s2_len + 1), sizeof(char));
-	if (!str)
-		return (NULL);
-	pos = 0;
-	while (*s1)
-		str[pos++] = *s1++;
-	while (*s2)
-		str[pos++] = *s2++;
-	return (str);
+	if (pow == 0)
+		return (1);
+	result = 1;
+	while (pow-- > 0)
+		result *= 10;
+	return (result);
+}
+
+int	put_to_screen(char *digit, int *counter)
+{
+	(*counter)++;
+	return (write(1, digit, 1));
 }
