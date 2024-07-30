@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:11:57 by daspring          #+#    #+#             */
-/*   Updated: 2024/07/30 18:52:59 by daspring         ###   ########.fr       */
+/*   Updated: 2024/07/30 19:27:00 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 #include <fcntl.h>
 #include <sys/wait.h>
 
-void	run_second_command(char *argv[], int fd[], char *envp[]);
+#include "libft/libft.h"
+
+void	run_last_command(char *argv[], int fd[], char *envp[]);
 void	run_first_command(char *argv[], int fd[], char *envp[]);
 
 int	main(int argc, char *argv[], char *envp[])
@@ -33,30 +35,15 @@ int	main(int argc, char *argv[], char *envp[])
 	}
 	else
 	{
-		// wait(NULL);
-		run_second_command(argv, fd, envp);
+		run_last_command(argv, fd, envp);
 	}
 	return (EXIT_SUCCESS);
 }
 
-void	run_second_command(char *argv[], int fd[], char *envp[])
-{
-	int	filedes;
-
-	filedes = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (filedes == -1)
-		exit(EXIT_FAILURE);
-	dup2(filedes, STDOUT_FILENO);
-	dup2(fd[0], STDIN_FILENO);
-	close(fd[1]);
-	close(filedes);
-	char	*argv2[] = {"cat", NULL};
-	execve("/bin/cat", argv2, envp);
-}
-
 void	run_first_command(char *argv[], int fd[], char *envp[])
 {
-	int	filedes;
+	int		filedes;
+	char	**cmd_string;
 
 	filedes = open(argv[1], O_RDONLY, 0777);
 	if (filedes == -1)
@@ -66,5 +53,24 @@ void	run_first_command(char *argv[], int fd[], char *envp[])
 	close(fd[0]);
 	close(filedes);
 	char	*argv2[] = {"cat", NULL};
-	execve("/bin/cat", argv2, envp);
+	cmd_string = ft_split(argv[2], ' ');
+	execve("/bin/cat", cmd_string, envp);
+	write(1, "something went wrong with the first command\n", 44);
+}
+
+void	run_last_command(char *argv[], int fd[], char *envp[])
+{
+	int		filedes;
+	char	**cmd_string;
+
+	filedes = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (filedes == -1)
+		exit(EXIT_FAILURE);
+	dup2(filedes, STDOUT_FILENO);
+	dup2(fd[0], STDIN_FILENO);
+	close(fd[1]);
+	close(filedes);
+	cmd_string = ft_split(argv[3], ' ');
+	execve("/bin/cat", cmd_string, envp);
+	write(1, "something went wrong with the second command\n", 45);
 }
