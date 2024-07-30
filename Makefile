@@ -6,11 +6,11 @@
 #    By: daspring <daspring@student.42heilbronn.de  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 12:20:34 by daspring          #+#    #+#              #
-#    Updated: 2024/07/30 20:35:32 by daspring         ###   ########.fr        #
+#    Updated: 2024/07/30 22:17:00 by daspring         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS= -g -Wall -Werror -Wextra -O3
+CFLAGS= -g
 
 NAME=pipex
 
