@@ -6,13 +6,14 @@
 /*   By: daspring <daspring@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:11:57 by daspring          #+#    #+#             */
-/*   Updated: 2024/07/30 15:47:50 by daspring         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:05:19 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/wait.h>
 
 void	run_first_command(char *envp[]);
 
