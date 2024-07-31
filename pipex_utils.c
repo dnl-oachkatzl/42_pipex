@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 13:53:13 by daspring          #+#    #+#             */
-/*   Updated: 2024/07/31 13:55:48 by daspring         ###   ########.fr       */
+/*   Updated: 2024/07/31 15:50:54 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	execute_command(char *arg, char **envp)
 	path_to_bin = find_working_path(cmd_string[0], envp);
 	if (path_to_bin == NULL)
 	{
+		free_mem(cmd_string, path_to_bin, NULL);
 		perror("path to bin could not be extracted");
 		exit(EXIT_FAILURE);
 	}

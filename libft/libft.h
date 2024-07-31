@@ -6,15 +6,15 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:10:28 by daspring          #+#    #+#             */
-/*   Updated: 2024/07/31 13:50:47 by daspring         ###   ########.fr       */
+/*   Updated: 2024/07/31 15:48:59 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <stdlib.h>
-#include <stddef.h>
+# include <stdlib.h>
+# include <stddef.h>
 
 typedef struct s_list
 {

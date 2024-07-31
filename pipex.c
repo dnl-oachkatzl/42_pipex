@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.de  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 14:11:57 by daspring          #+#    #+#             */
-/*   Updated: 2024/07/31 14:00:08 by daspring         ###   ########.fr       */
+/*   Updated: 2024/07/31 15:51:21 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	run_first_command(char *argv[], int fd[], char *envp[])
 {
 	int		filedes;
 
-	filedes = open(argv[1], O_RDONLY, 0777);
+	filedes = open(argv[1], O_RDONLY, 0666);
 	if (filedes == -1)
 	{
 		perror("Failure to open input file");
@@ -68,7 +68,7 @@ static void	run_last_command(char *argv[], int fd[], char *envp[])
 {
 	int		filedes;
 
-	filedes = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	filedes = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (filedes == -1)
 	{
 		perror("Failure to open output file");
