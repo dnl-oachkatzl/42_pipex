@@ -6,7 +6,7 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:44:31 by daspring          #+#    #+#             */
-/*   Updated: 2024/03/21 15:09:57 by daspring         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:39:36 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,8 @@ static size_t	trimm_trailing_chars(const char *s1, const char *set)
 	size_t	s1_len;
 	size_t	pos_set;
 	int		found_in_set;
-	size_t	last_index;
 
 	s1_len = ft_strlen(s1) - 1;
-	last_index = 0;
 	while (s1_len + 1 >= 1)
 	{
 		pos_set = 0;

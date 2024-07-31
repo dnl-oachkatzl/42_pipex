@@ -6,11 +6,12 @@
 /*   By: daspring <daspring@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:10:28 by daspring          #+#    #+#             */
-/*   Updated: 2024/07/30 21:37:18 by daspring         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:50:47 by daspring         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*header guard*/
+#ifndef LIBFT_H
+# define LIBFT_H
 
 #include <stdlib.h>
 #include <stddef.h>
@@ -87,3 +88,5 @@ int		ft_puthexa_upper_case(unsigned int n);
 int		ft_putpointer(unsigned long n);
 int		put_to_screen(char *c, int *counter);
 int		power_of_ten(int pow);
+
+#endif

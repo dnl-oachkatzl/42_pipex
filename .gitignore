@@ -2,5 +2,5 @@ a.out
 *.o
 pipex
 helloWorld*
-*file*
+*_file*
 *.dSYM
